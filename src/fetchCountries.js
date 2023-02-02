@@ -1,16 +1,18 @@
 const ENDPOINT = "https://restcountries.com/v3.1/name/";
+import Notiflix from 'notiflix';
 
 
 function getCountries(name) {
     return fetch(`${ENDPOINT}${name}?fields=name,capital,population,flags,languages`)
         .then(response => {
-            // console.log(response.json());
-            return response.json();
-        });
-        // .then(data => data.country);
-    // .catch(error => {
-    //     console.log(error);
-    // });
+            if (response.status === 404) {
+                throw new Error(Notiflix.Notify.failure("Oops, there is no country with that name"));
+            } else {
+                return response.json();
+            }
+        })
+        
+    
 }
 
 
