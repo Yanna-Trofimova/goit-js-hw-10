@@ -33,7 +33,7 @@ function onInputSearch(e) {
     
     API.getCountries(inputValue)
         .then(searchCountryFinally)
-        .catch()
+        .catch(inputClear)
         
 }
 
@@ -71,7 +71,7 @@ function creatList (countries) {
         
          `
          <li class="country-item">
-            <img src="${flags.png}" alt="flag" class="info-card_flag" width="50" heigth="50">
+            <img src="${flags.png}" alt="flag" class="info-card_flag" width="50" height="50">
             <h1 class="info-card__name">${name.official}</h1>
         </li>
     `
